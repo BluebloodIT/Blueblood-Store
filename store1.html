@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueblood Store - Professional Game Boosting Services</title>
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #534bae;
+            --primary-dark: #000051;
+            --secondary: #ff5722;
+            --text: #333;
+            --light: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .username {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .game {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .card-image {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .slider-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff80;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dots .dot.active {
+            background: #fff;
+        }
+
+        .image-slider {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            will-change: transform;
+        }
+
+        .card-image img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover .card-image img {
+            transform: scale(1.03);
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .service {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-text {
+            margin: 1rem 0;
+        }
+
+        .rating {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .likes {
+            display: flex;
+            align-items: center;
+        }
+
+        .likes i {
+            margin-right: 0.3rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .intro h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #e64a19;
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Blueblood Store</div>
+        <div class="tagline">Professional Game Boosting Services - Level Up Faster with Our Elite Players</div>
+    </header>
+
+    <div class="intro">
+        <h2>Arena Breakout Boosting Services</h2>
+        <p>Professional Koen and Value boosting services - Get your desired ranks faster with our elite players:</p>
+        <ul>
+            <li>Koen 1M = Rp50rb</li>
+            <li>Value 1M = Rp45rb</li>
+            <li>Mandor 1M = Rp40rb</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="testimonials">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a25ba3f-d6d7-403b-b6a5-aa3fe6c656e9.png" alt="Arena Breakout player profile" class="profile-pic">
+                    <div class="user-info">
+                        <div class="username">AB_Booster01</div>
+                        <div class="game">Arena Breakout</div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <div class="image-slider">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fbe4f849-467c-4dee-bdf8-d35cce6abfed.png" alt="Arena Breakout Koen boost showcase">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1a42df7-7259-4e96-894c-a1faf6cea803.png" alt="Arena Breakout Value boost showcase">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc133215-9e21-4667-a1e8-0668fedf0ed3.png" alt="Arena Breakout Mandor boost showcase">
+                    </div>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <span class="service">Koen 1M Boost</span>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">Got my Koen 1M boost delivered in just 2 days! Fast service with excellent communication. Will definitely order Value boost next time!</p>
+                </div>
+                <div class="card-footer">
+                    <div class="likes">❤️ 89 likes</div>
+                    <div class="date">3 days ago</div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f7ce72a-8e5e-4351-96af-2ef7774e791d.png" alt="Profile picture of female gamer with pink hair" class="profile-pic">
+                    <div class="user-info">
+                        <div class="username">JenGames</div>
+                        <div class="game">League of Legends</div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/aab561ce-b1e5-48d8-97b9-b3a6515205a7.png" alt="League of Legends client showing Gold rank promotion with Mastery 7 champion">
+                </div>
+                <div class="card-content">
+                    <span class="service">Placement Matches</span>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">Was nervous about placements but Blueblood got me Gold III right away! Fast service and great communication throughout.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="likes">❤️ 98 likes</div>
+                    <div class="date">1 week ago</div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/237cd8d9-f232-40b9-861a-4212d8adbf6e.png" alt="Profile picture of streamer with microphone setup" class="profile-pic">
+                    <div class="user-info">
+                        <div class="username">Twitch_Tom</div>
+                        <div class="game">Dota 2</div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a33969c0-bf05-43e7-b5ac-7877fd83ee86.png" alt="Dota 2 Ancient rank medal with celebration effects">
+                </div>
+                <div class="card-content">
+                    <span class="service">MMR Boost + Coaching</span>
+                    <div class="rating">★★★★☆</div>
+                    <p class="testimonial-text">Not only did they boost my MMR, but the coach taught me so much about positioning and map awareness. Worth every penny!</p>
+                </div>
+                <div class="card-footer">
+                    <div class="likes">❤️ 215 likes</div>
+                    <div class="date">3 days ago</div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a77eeff4-4171-4de4-b22c-024fed01afec.png" alt="Profile picture of competitive gamer wearing jersey" class="profile-pic">
+                    <div class="user-info">
+                        <div class="username">EsportsPro22</div>
+                        <div class="game">Apex Legends</div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/464d4bd0-687b-4eb6-8678-08359fed2cdf.png" alt="Apex Legends Predator rank badge with season stats">
+                </div>
+                <div class="card-content">
+                    <span class="service">Legendary Rank Grind</span>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">Made it to Predator this season thanks to Blueblood! Their boosters play like pros and complete orders crazy fast.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="likes">❤️ 312 likes</div>
+                    <div class="date">1 day ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Ready to Level Up Your Game?</h2>
+        <p>Join thousands of satisfied customers who trust Blueblood for their boosting needs.</p>
+        <a href="#" class="cta-button">Order Now</a>
+    </div>
+
+    <footer>
+        <p>© 2023 Blueblood Store. All rights reserved.</p>
+        <p>Professional Game Boosting Services</p>
+    </footer>
+
+    <script>
+        // Image sliders functionality
+        function initSliders() {
+            const sliders = document.querySelectorAll('.image-slider');
+            sliders.forEach((slider, index) => {
+                let currentIndex = 0;
+                const dots = slider.parentElement.querySelectorAll('.dot');
+                const images = slider.children;
+
+                function showSlide(index) {
+                    if (index < 0) index = images.length - 1;
+                    if (index >= images.length) index = 0;
+                    currentIndex = index;
+                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    dots.forEach((dot, i) => {
+                        dot.style.background = i === currentIndex ? '#fff' : '#ffffff80';
+                    });
+                }
+
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => showSlide(i));
+                });
+
+                // Auto-advance slides
+                setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, 5000);
+            });
+        }
+
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            initSliders();
+            const cards = document.querySelectorAll('.testimonial-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
+
